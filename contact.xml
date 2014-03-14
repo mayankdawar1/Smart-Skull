@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+<LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="40dip" android:orientation="horizontal">
+<TextView android:id="@+id/TextView09" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dip" android:layout_marginRight="5dip" android:text=" User Name: " android:textSize="20dip"></TextView>
+<EditText android:id="@+id/editText5" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="22dip" android:ems="10"/>
+</LinearLayout>
+<LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="40dip" android:orientation="horizontal">
+<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dip" android:layout_marginRight="5dip" android:text="User Phone no: " android:textSize="20dip"></TextView>
+<EditText android:id="@+id/editText1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:ems="10" android:inputType="phone">
+<requestFocus android:layout_width="wrap_content"/>
+</EditText>
+</LinearLayout>
+<LinearLayout android:id="@+id/linearLayout2" android:layout_width="match_parent" android:layout_height="wrap_content">
+<TextView android:id="@+id/TextView03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dip" android:layout_marginRight="5dip" android:text="Emergency no1: " android:textSize="20dip"></TextView>
+<EditText android:id="@+id/editText2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@+id/editText1" android:ems="10" android:inputType="phone"/>
+</LinearLayout>
+<LinearLayout android:id="@+id/linearLayout2" android:layout_width="match_parent" android:layout_height="wrap_content">
+<TextView android:id="@+id/TextView09" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dip" android:layout_marginRight="5dip" android:text="Emergency no1: " android:textSize="20dip"></TextView>
+<EditText android:id="@+id/editText6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@+id/editText1" android:ems="10" android:inputType="phone"/>
+</LinearLayout>
+<LinearLayout android:id="@+id/linearLayout2" android:layout_width="match_parent" android:layout_height="wrap_content">
+<TextView android:id="@+id/TextView05" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dip" android:layout_marginRight="5dip" android:text="Emergency no2: " android:textSize="20dip"></TextView>
+<EditText android:id="@+id/editText3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:ems="10" android:inputType="phone"/>
+</LinearLayout>
+<ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
+<LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="40dip" android:orientation="horizontal">
+<Button android:id="@+id/button1" android:layout_width="80dp" android:layout_height="40dp" android:layout_marginBottom="48dp" android:layout_marginLeft="20dp" android:background="@drawable/resetbutton" android:onClick="Reset"/>
+<Button android:id="@+id/button8" android:layout_width="80dp" android:layout_height="40dp" android:layout_marginBottom="45dp" android:layout_marginLeft="50dp" android:background="@drawable/savebutton" android:onClick="SaveText" android:scrollbarStyle="insideOverlay"/>
+</LinearLayout>
+</ScrollView>
+</LinearLayout>
