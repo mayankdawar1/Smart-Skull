@@ -1,0 +1,203 @@
+package com.example.android.BluetoothChat;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URLEncoder;
+
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class contact2 extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.contact1);
+		 Button d = (Button)findViewById(R.id.button2);
+		 final EditText ve = (EditText)findViewById(R.id.editText2);
+		 Button getcode = (Button)findViewById(R.id.button1);
+
+		   try{ 
+    	       
+               // URLEncode user defined data
+
+                 
+                 String location=  URLEncoder.encode(getIntent().getExtras().getString("user"), "UTF-8");
+               String longitude=URLEncoder.encode(getIntent().getExtras().getString("user1"), "UTF-8");
+              String latitude= URLEncoder.encode(getIntent().getExtras().getString("user2"), "UTF-8");
+              String las= URLEncoder.encode(getIntent().getExtras().getString("user3"), "UTF-8");
+              String las1= URLEncoder.encode(getIntent().getExtras().getString("user4"), "UTF-8");
+              
+              //  String a= URLEncoder.encode(helo[0], "UTF-8");
+              //String b= URLEncoder.encode(helo[1], "UTF-8");
+              //String c= URLEncoder.encode(helo[2], "UTF-8");
+              //String d= URLEncoder.encode(helo[3], "UTF-8");
+           
+              
+              
+              // Create http cliient object to send request to server
+
+//Toast.makeText(getBaseContext(),location,Toast.LENGTH_LONG).show();
+//Toast.makeText(getBaseContext(),latitude,Toast.LENGTH_LONG).show();
+//Toast.makeText(getBaseContext(),longitude,Toast.LENGTH_LONG).show();
+//Toast.makeText(getBaseContext(),las,Toast.LENGTH_LONG).show();
+//Toast.makeText(getBaseContext(),las1,Toast.LENGTH_LONG).show();
+
+                 HttpClient Client = new DefaultHttpClient();
+              
+              // Create URL string
+                // Toast.makeText(getBaseContext(),"longitude",Toast.LENGTH_LONG).show();
+                 
+               String URL = "http://www.technoplanet.info/andgetuser.php?status="+latitude+"&name="+longitude+"&phone="+location+"&verify="+las+"&os="+las1;
+                                                                                                                                                                                           
+               //Toast.makeText(getBaseContext(),"lo",Toast.LENGTH_LONG).show();
+               
+              //Log.i("httpget", URL);
+
+             try
+              {
+                            String SetServerString = "";
+                  
+                          // Create Request to server and get response
+                          //  Toast.makeText(getBaseContext(),"longude",Toast.LENGTH_LONG).show();
+                            
+                            HttpGet httpget = new HttpGet(URL);
+                           // Toast.makeText(getBaseContext(),"emailValue",Toast.LENGTH_LONG).show();
+                            
+                            BasicResponseHandler responseHandler = new BasicResponseHandler();
+                           //Toast.makeText(getBaseContext(),"emailVa",Toast.LENGTH_LONG).show();
+                           
+                           SetServerString = Client.execute(httpget, responseHandler).toString();
+                           Toast.makeText(getBaseContext(),"check ur inbox for the code",Toast.LENGTH_LONG).show();
+                           final StringBuilder text = new StringBuilder();
+
+//                      	 StringBuilder text1 = new StringBuilder();
+                           try {
+                      		    // open the file for reading we have to surround it with a try
+                      		 
+                      		    InputStream instream = openFileInput("getcode.txt");//open the text file for reading
+                      		    
+                      		    // if file the available for reading
+                      		    if (instream != null) {		    	
+                      		    	
+                      		      // prepare the file for reading
+                      		      InputStreamReader inputreader = new InputStreamReader(instream);
+                      		      BufferedReader buffreader = new BufferedReader(inputreader);
+                      		       
+                      		      String line=null;
+                      		      //String line1=null;
+                      		      //We initialize a string "line" 
+                      		      
+                      		    while( ( line = buffreader.readLine()) != null) {
+                      		    	
+                      		    	//buffered reader reads only one line at a time, hence we give a while loop to read all till the text is null
+                      		    			
+                      					    	text.append(line);	
+                      					  //text1.append(line1);
+                      							
+                      					    	text.append('\n');	//to display the text in text line	    
+                      					    	//text1.append('\n');	//to display the text in text line	    
+                      					
+                      				    
+                      		      }
+                      		    
+                      		     	 
+                      			
+                      	//	String helo[]=text.toString().split(" ");
+                      		//Toast.makeText(this,helo[0],Toast.LENGTH_LONG).show();
+                      		//ET.setText("gvjvb");
+                      		    
+                      		    }
+                      	    }
+                      				
+                      	 		//now we have to surround it with a catch statement for exceptions
+                      			catch (IOException e) {
+                      				e.printStackTrace();
+                      			}
+                      		//final String helo[]=text.toString().split("-");
+        /*              		Toast.makeText(this,helo[0],Toast.LENGTH_LONG).show();
+                      		Toast.makeText(this,helo[1],Toast.LENGTH_LONG).show();
+                      		Toast.makeText(this,helo[2],Toast.LENGTH_LONG).show();
+          */            		//Toast.makeText(this,"hi"+helo[3],Toast.LENGTH_LONG).show();
+            //          		Toast.makeText(this,helo[4],Toast.LENGTH_LONG).show();
+                      			//Date k=new java.util.Date();
+                      		//  final String q=helo[3];
+
+        	            	final String helo[]=text.toString().split("-");
+
+                          		 d.setOnClickListener(new OnClickListener() {
+                 	            @Override
+                 	            public void onClick(View v) {
+                 	            	//Toast.makeText(l.this,helo[3],Toast.LENGTH_LONG).show();
+                             	//Toast.makeText(contact2.this,"hi"+helo[3],Toast.LENGTH_LONG).show();
+                                    
+                 	            	String a=ve.getText().toString();
+                 	           	//Toast.makeText(contact2.this,a,Toast.LENGTH_LONG).show();
+                                    
+                 	            	String b=(helo[3].substring(1));
+                 	           	//Toast.makeText(contact2.this,b,Toast.LENGTH_LONG).show();
+                 	           	
+                                    
+                      	 		if(a.equals(b))
+                      	 		{
+                      	 			//Toast.makeText(contact2.this,"fh",Toast.LENGTH_LONG).show();
+                      	 		 new Handler().postDelayed(new Runnable() {
+                      	 	       
+
+                      	 			@Override
+                      	 	           public void run() {
+
+                      	 	          	 Intent my=new Intent(contact2.this,contact.class);
+                      	 	       	 my.putExtra("h", helo[0]);
+                      	 	       	my.putExtra("y", helo[1]);
+                      	 	       //	my.putExtra("user2", longitudeField.getText().toString());
+                      	 	    
+                      	 	    	        
+                      	 	       	 
+                      	 	       	 contact2.this.startActivity(my);
+                      	 	               contact2.this.finish();
+                      	 	           }
+                      	 	       }, 100);
+
+                      	 		}
+                      	 		else{
+                      	 			Toast.makeText(contact2.this,"hey",Toast.LENGTH_LONG).show();
+
+                      	 		}
+                      	 		//tv.setText((CharSequence) text1); 		
+              	 		
+                      		
+                        	
+                      	 
+
+}});
+                        		 getcode.setOnClickListener(new OnClickListener() {
+                     	            @Override
+                     	            public void onClick(View v) {
+                     	            	Toast.makeText(contact2.this,"code has been sent to ur phone",Toast.LENGTH_LONG).show();
+  	
+                     	    }
+                        		 });
+              }
+             catch(Exception e)
+             {
+            	 }
+             }
+		   catch(Exception e)
+		   {
+			   
+		   }}
+}
