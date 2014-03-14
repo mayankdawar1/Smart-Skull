@@ -1,0 +1,263 @@
+package com.example.android.BluetoothChat;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.Writer;
+
+
+import android.os.Bundle;
+import android.os.Handler;
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Typeface;
+import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class contact extends Activity {
+
+	private Writer text1;
+	//private CharSequence[] h;
+	//private CharSequence s;
+//String q[]=new String[2];
+private TextView ET;
+//String w[]=new String[2];
+
+ EditText userno;
+EditText emer1 ;
+EditText emer2 ;
+EditText emer3;
+EditText name;
+private Object text; 
+@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.contact);
+		 EditText userno = (EditText)findViewById(R.id.editText1);
+		   EditText emer1 = (EditText)findViewById(R.id.editText2);
+		   EditText emer2 = (EditText)findViewById(R.id.editText3);
+		  EditText emer3 = (EditText)findViewById(R.id.editText6);
+		  EditText name = (EditText)findViewById(R.id.editText5);
+		
+		//Button button1= (Button)findViewById(R.id.button1);
+		//Typeface typeFace=Typeface.createFromAsset(getAssets(), "AnjaliOldLipi.ttf");
+		//button1.setTypeface(typeFace);
+		 //button1.setText("à´…"); StringBuilder text = new StringBuilder();
+		//Toast.makeText(this,"kh",Toast.LENGTH_LONG).show();
+   		
+
+//   	 StringBuilder text1 = new StringBuilder();
+	  //Toast.makeText(this,helo[0],Toast.LENGTH_LONG).show();
+	//  Toast.makeText(this,helo[1],Toast.LENGTH_LONG).show();
+//Toast.makeText(this,helo[2],Toast.LENGTH_LONG).show();
+//Toast.makeText(this,helo[3],Toast.LENGTH_LONG).show();
+//userno.setText(helo[0]);
+//emer1.setText(helo[1]);emer2.setText(helo[2]);name.setText(helo[3]);
+		userno.setText(getIntent().getExtras().getString("h"));
+		userno.setKeyListener(null);
+	//getIntent().getExtras().getString("h");
+		name.setText(getIntent().getExtras().getString("y"));
+		name.setKeyListener(null);	//,Toast.LENGTH_LONG).show();
+					
+        /*StringBuilder text = new StringBuilder();
+
+//   	 StringBuilder text1 = new StringBuilder();
+   	 getIntent
+   	 try {
+   		    // open the file for reading we have to surround it with a try
+   		 
+   		    InputStream instream = openFileInput("getcode.txt");//open the text file for reading
+   		 Toast.makeText(this,"hel[0]",Toast.LENGTH_LONG).show();
+	   			    
+   		    // if file the available for reading
+   		    if (instream != null) {		    	
+   		    	
+   		      // prepare the file for reading
+   		      InputStreamReader inputreader = new InputStreamReader(instream);
+   		      BufferedReader buffreader = new BufferedReader(inputreader);
+   		       
+   		      String line=null;
+   		      //String line1=null;
+   		      //We initialize a string "line" 
+   		      
+   		    while( ( line = buffreader.readLine()) != null) {
+   		    	
+   		    	//buffered reader reads only one line at a time, hence we give a while loop to read all till the text is null
+   		    			
+   					    	text.append(line);	
+   					  //text1.append(line1);
+   							
+   					    	text.append('\n');	//to display the text in text line	    
+   					    	//text1.append('\n');	//to display the text in text line	    
+   					
+   				    
+   		      }
+   		    
+   		     	 
+   		 Toast.makeText(this,"j",Toast.LENGTH_LONG).show();
+	   		
+   		String helo[]=text.toString().split("-");
+   		Toast.makeText(this,helo[0],Toast.LENGTH_LONG).show();
+   		Toast.makeText(this,helo[1],Toast.LENGTH_LONG).show();
+   	   	
+   		    
+   		    }
+   	    }
+   				
+   	 		//now we have to surround it with a catch statement for exceptions
+   			catch (IOException e) {
+   				e.printStackTrace();
+   			}
+   		
+*/
+	}
+	
+	 public void SaveText(View view){	 
+		// getIntent().getExtras().getString("h");
+		 //getIntent().getExtras().getString("y");
+		 //Toast.makeText(this,getIntent().getExtras().getString("h")
+		 //,Toast.LENGTH_LONG).show();
+		/* String helo[]=text.toString().split("-");
+	   		
+	   		Toast.makeText(this,helo[0],Toast.LENGTH_LONG).show();
+	   		Toast.makeText(this,helo[1],Toast.LENGTH_LONG).show();
+	   		*/
+		 try {
+			  // open myfilename.txt for writing
+			  OutputStreamWriter out = new OutputStreamWriter(openFileOutput("myfilename.txt",MODE_PRIVATE));
+			  // write the contents on mySettings to the file
+			  //  userno.setText(getIntent().getExtras().getString("h"));
+			  EditText userno = (EditText)findViewById(R.id.editText1);
+			   EditText emer1 = (EditText)findViewById(R.id.editText2);
+			   EditText emer2 = (EditText)findViewById(R.id.editText3);
+			  EditText emer3 = (EditText)findViewById(R.id.editText6);
+			  EditText name = (EditText)findViewById(R.id.editText5);
+			
+			 // name.setText(getIntent().getExtras().getString("y"));
+			  //userno.setKeyListener(null);name.setKeyListener(null);
+				 		 
+			  //java.util.Date t=new java.util.Date();
+			  String text = getIntent().getExtras().getString("h");
+			  String text1=emer1.getText().toString();
+			  String text2=emer2.getText().toString();
+			  String text3=emer3.getText().toString();
+			  String text4=getIntent().getExtras().getString("y");
+			  // out.write(text+" "+text1+" "+text2+" "+text4);//+" "+text4);
+			  //out.write`(text1);
+			  
+			   //out.write('\n');			   
+			  // close the file
+			  //out.close();
+			  //Toast.makeText(this,"Text Saved !",Toast.LENGTH_LONG).show();
+			if((text3.length()==10)&&(text1.length()==10)&&(text2.length()==10))
+				{
+				//Toast.makeText(this,"hkbk",Toast.LENGTH_LONG).show();
+				
+				
+				  out.write(text+"-"+text1+"-"+text2+"-"+text3+"-"+text4);//+" "+text4);
+				  //out.write`(text1);
+				  //Toast.makeText(this,"jgg",Toast.LENGTH_LONG).show();
+					
+				   out.write('\n');		
+				   //Toast.makeText(this,"jg",Toast.LENGTH_LONG).show();
+					
+				  // close the file
+				  out.close();
+				  Toast.makeText(this,"Text Saved !",Toast.LENGTH_LONG).show();
+				
+         	 new Handler().postDelayed(new Runnable() {
+        	     @Override
+        	        public void run() {
+
+           	  //      	mOutEditText.setText("jgfjhg");
+        	       	 Intent my89=new Intent(contact.this,launch.class);
+        	       //	 my89.putExtra("user",  userno.getText().toString());
+        	        //	my89.putExtra("user1", emer1.getText().toString());
+        	        	//my89.putExtra("user2", emer2.getText().toString());
+        	        	//my89.putExtra("user3", name.getText().toString());
+               	     
+        	            contact.this.startActivity(my89);
+        	            contact.this.finish();
+        	           
+        	       }
+        	    }, 100);
+			}
+			else
+			{ Toast.makeText(this,"pls fill the correct details",Toast.LENGTH_LONG).show();
+			}
+			} catch (java.io.IOException e) {
+			  //do something if an IOException occurs.
+				Toast.makeText(this,"Sorry Text could't be added",Toast.LENGTH_LONG).show();
+			}
+				 
+	 }
+ public void Reset(View view){	 
+		 
+		 try {
+			 
+			 OutputStreamWriter out = new OutputStreamWriter(openFileOutput("myfilename.txt",MODE_PRIVATE));
+			  // write the contents on mySettings to the file
+			  EditText userno = (EditText)findViewById(R.id.editText1);
+			  EditText emer1 = (EditText)findViewById(R.id.editText2);
+			  EditText emer2 = (EditText)findViewById(R.id.editText3);
+			  EditText emer3 = (EditText)findViewById(R.id.editText6);
+			  EditText name = (EditText)findViewById(R.id.editText5);
+				userno.setText(" ");
+				emer1.setText(" ");
+			  emer2.setText(" ");name.setText(" ");
+				emer3.setText(" ");
+				
+				 String text = userno.getText().toString();
+				  String text1=emer1.getText().toString();
+				  String text2=emer2.getText().toString();
+				  String text3=emer3.getText().toString();
+				  String text4=name.getText().toString();
+				  
+				  //String text1 = ET1.getText().toString();
+				  
+				  out.write(text+"-"+text1+"-"+text2+"-"+text3+"-"+text4);//+" "+text4);
+				  //out.write`(text1);
+				  
+				   out.write('\n');			   
+				  // close the file
+				  out.close();
+				  new Handler().postDelayed(new Runnable() {
+		        	     @Override
+		        	        public void run() {
+
+		           	  //      	mOutEditText.setText("jgfjhg");
+		        	       	 Intent my90=new Intent(contact.this,contact12.class);
+		        	       //	 my89.putExtra("user",  userno.getText().toString());
+		        	        //	my89.putExtra("user1", emer1.getText().toString());
+		        	        	//my89.putExtra("user2", emer2.getText().toString());
+		        	        	//my89.putExtra("user3", name.getText().toString());
+		               	     
+		        	            contact.this.startActivity(my90);
+		        	            contact.this.finish();
+		        	           
+		        	       }
+		        	    }, 100);
+
+				 
+		 }
+		 catch(Exception e)
+		 {
+			 Toast.makeText(this,"Your data has been removed",Toast.LENGTH_LONG).show();
+				 }
+		 }
+	 	 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.option_menu, menu);
+		return true;
+	}
+
+}
