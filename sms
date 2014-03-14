@@ -1,0 +1,50 @@
+package com.example.android.BluetoothChat;
+
+//import android.net.Uri;
+import android.os.Bundle;
+import android.os.Handler;
+import android.app.Activity;
+import android.content.Intent;
+//import android.content.Intent;
+import android.telephony.SmsManager;
+import android.view.Menu;
+//import android.view.View;
+//import android.view.View.OnClickListener;
+//import android.widget.Button;
+import android.widget.Toast;
+
+public class sms extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.sm);
+		
+//final java.util.Date y=new java.util.Date();
+			
+ 
+		Toast.makeText(this, 
+		            "msg has been sent", Toast.LENGTH_LONG).show();
+
+				String ph="8447473408";
+				String t="i met with an accident around"+ getIntent().getExtras().getString("user3")+" my location is"+ getIntent().getExtras().getString("user")+getIntent().getExtras().getString("user1")+getIntent().getExtras().getString("user2");
+				SmsManager smsMgr = SmsManager.getDefault();
+				  smsMgr.sendTextMessage(ph, null, t, null, null);
+				
+				  Toast.makeText(this, 
+				            "msg ", Toast.LENGTH_LONG).show();
+		
+				
+
+			}
+
+	
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.option_menu, menu);
+		return true;
+	}
+
+}
