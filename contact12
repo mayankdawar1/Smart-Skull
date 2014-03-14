@@ -1,0 +1,165 @@
+package com.example.android.BluetoothChat;
+
+//import com.example.android.BluetoothChat.R;
+
+//import com.example.android.BluetoothChat.R;
+
+import java.io.OutputStreamWriter;
+import java.net.URLEncoder;
+import java.util.Random;
+
+
+
+
+import android.os.Bundle;
+import android.os.Handler;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class contact12 extends Activity {
+
+	public String we;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.contact1);
+		//EditView latituteField = (EditView) findViewById(R.id.editText1);
+		final EditText userno = (EditText)findViewById(R.id.editText1);
+		final EditText name = (EditText)findViewById(R.id.ed);
+		 Button d = (Button)findViewById(R.id.button2);
+		 final EditText ver = (EditText)findViewById(R.id.editText2);
+				
+		// userno.setKeyListener(null); 
+		 Button getcode = (Button)findViewById(R.id.button1);
+		 getcode.setOnClickListener(new OnClickListener() {
+	            @Override
+	            public void onClick(View v) {
+	            	 int aStart=1000;
+	            	 int aEnd=9999;
+	            	  Random random = new Random();
+	    //        	  Toast.makeText(MainActivity.this, "hkk",
+	      //                    Toast.LENGTH_LONG).show();
+	              
+	            	//  showRandomInteger(START, END, random);
+	            	  
+	            	  //Toast.makeText(MainActivity.this,"hi"+we ,
+	                    //         Toast.LENGTH_LONG).show();
+	            	  if ( aStart > aEnd ) {
+	            	       throw new IllegalArgumentException("Start cannot exceed End.");
+	            	     }
+	            	     //get the range, casting to long to avoid overflow problems
+	            	     long range = (long)aEnd - (long)aStart + 1;
+	            	     // compute a fraction of the range, 0 <= frac < range
+	            	     long fraction = (long)(range * random.nextDouble());
+	            	     int randomNumber =  (int)(fraction + aStart);    
+	            	     //log("Generated : " + randomNumber);
+	            	     String we=" "+randomNumber;
+	            	     //System.out.println(randomNumber);
+	        //    	     Toast.makeText(MainActivity.this,we ,
+	          //                   Toast.LENGTH_LONG).show();
+	                
+	            	 try {
+	       			  // open myfilename.txt for writing
+	       			  OutputStreamWriter out = new OutputStreamWriter(openFileOutput("getcode.txt",MODE_PRIVATE));
+	       			  // write the contents on mySettings to the file
+	       			   final EditText userno1 = (EditText)findViewById(R.id.editText1);
+	       			   final EditText name1 = (EditText)findViewById(R.id.ed);
+	       			//   EditText emer2 = (EditText)findViewById(R.id.editText3);
+	       			  //EditText emer3 = (EditText)findViewById(R.id.editText4);
+	       			//  EditText name = (EditText)findViewById(R.id.editText5);
+	       				 
+	       			  //java.util.Date t=new java.util.Date();
+	       			  String text = userno1.getText().toString();
+	       			  String text1=name1.getText().toString();
+	       			 final String text2="Pending";
+	       			 final String text3=we;
+	       			 final String text4="Android";
+	       			 //System.out.println(text3);
+	       			 
+	       			//  String text4=name.getText().toString();
+	       			  // out.write(text+" "+text1+" "+text2+" "+text4);//+" "+text4);
+	       			  //out.write`(text1);
+	       			  
+	       			   //out.write('\n');			   
+	       			  // close the file
+	       			  //out.close();
+	       			  //Toast.makeText(this,"Text Saved !",Toast.LENGTH_LONG).show();
+	       			if((text.length()==10))
+	       				{
+	       				
+	       				
+	       				  out.write(text+"-"+text1+"-"+text2+"-"+text3+"-"+text4);//+" "+text4);
+	       				  //out.write`(text1);
+	       				  
+	       				   out.write('\n');			   
+	       				  // close the file
+	       				  out.close();
+	       				//Toast.makeText(this,"Text Saved",Toast.LENGTH_LONG).show();
+	    				System.out.println(we);
+	       				}
+	       				// Toast.makeText(this,"Text Saved !",Toast.LENGTH_LONG).show();
+	       			new Handler().postDelayed(new Runnable() {
+	        	     private String we;
+
+					@Override
+	        	        public void run() {
+
+	           	  //      	mOutEditText.setText("jgfjhg");
+	        	       	 Intent my89=new Intent(contact12.this,contact2.class);
+	        	       	 my89.putExtra("user",  userno1.getText().toString());
+	        	        	my89.putExtra("user1", name1.getText().toString());
+	        	        	my89.putExtra("user2", text2);
+	        	        	my89.putExtra("user3", text3);
+	        	        	my89.putExtra("user4", text4);
+		               	     
+	        	       	contact12.this.startActivity(my89);
+	        	       	contact12.this.finish();
+	        	           
+	        	       }
+	        	    }, 1000);
+  
+	}
+	            	 catch(Exception e)
+	            	 {
+	            		// Toast.makeText(this,"Text Saved !",Toast.LENGTH_LONG).show();
+
+	            	 }
+	            	
+	            	 //      showRandomInteger(START, END, random);
+	            	 
+	            	     //note a single Random object is reused here
+	            	     //  int randomInt = randomGenerator.nextInt(100);
+	            	      // log("Generated : " + randomInt);
+	            	     
+
+	            
+	            	   //  void showRandomInteger(int aStart, int aEnd, Random aRandom){
+	            	    //}	
+	            	     
+	            	  
+	            } 
+	            
+		 });
+		 d.setOnClickListener(new OnClickListener() {
+	            @Override
+	            public void onClick(View v) {
+	            	Toast.makeText(contact12.this,"invalid code",Toast.LENGTH_LONG).show();
+
+	            }
+		 });
+	}
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.option_menu, menu);
+		return true;
+	}
+
+}
